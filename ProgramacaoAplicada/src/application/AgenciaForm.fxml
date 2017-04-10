@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgenciaController">
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+   <top>
+      <Pane prefHeight="71.0" prefWidth="800.0" style="-fx-border-color: #a012c4; -fx-background-color: B551CE;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="33.0" layoutY="1.0" prefHeight="74.0" prefWidth="498.0" text="Cadastro Agencia" textFill="#a012c4">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="329.0" prefWidth="436.0" style="-fx-border-color: #a012c4; -fx-background-color: D531FF;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tfagencia" layoutX="26.0" layoutY="44.0" prefHeight="25.0" prefWidth="492.0" style="-fx-border-color: #a012c4; -fx-background-color: purple;">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="26.0" layoutY="14.0" prefHeight="23.0" prefWidth="99.0" text="Agencia" textFill="#a012c4">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="93.0" text="Numero" textFill="#a012c4">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfnumero" layoutX="26.0" layoutY="131.0" prefWidth="352.0" style="-fx-border-color: #a012c4; -fx-background-color: purple;">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </TextField>
+            <Button fx:id="dtnsalvar" layoutX="26.0" layoutY="189.0" mnemonicParsing="false" onAction="#onsalvar" style="-fx-border-color: #a012c4; -fx-background-color: purple;" text="Salvar" textFill="#de16f7" />
+            <ListView fx:id="lvagencia" layoutX="14.0" layoutY="232.0" onMouseClicked="#onEditar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: purple; -fx-border-color: #a012c4;" />
+            <Button fx:id="dtnexcluir" layoutX="378.0" layoutY="189.0" mnemonicParsing="false" onAction="#onexcluir" style="-fx-border-color: #a012c4; -fx-background-color: purple;" text="Excluir" textFill="#de16f7">
+               <effect>
+                  <Bloom />
+               </effect>
+            </Button>
+            <Button fx:id="dtnnovo" layoutX="212.0" layoutY="189.0" mnemonicParsing="false" onAction="#onnovo" style="-fx-border-color: #a012c4; -fx-background-color: purple;" text="Novo" textFill="#de16f7" />
+         </children>
+      </Pane>
+   </center>
+   <left>
+      <Pane prefHeight="405.0" prefWidth="128.0" style="-fx-border-color: #a012c4; -fx-background-color: AA13D1;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="405.0" prefWidth="126.0" style="-fx-border-color: #a012c4; -fx-background-color: AA13D1;" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="97.0" prefWidth="800.0" style="-fx-border-color: #a012c4; -fx-background-color: B551CE;" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
