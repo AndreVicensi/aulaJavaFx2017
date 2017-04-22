@@ -7,15 +7,25 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private LocalDate data_nascimento;
+	private Agencia agenciaPreferencial;
 	
+	public Agencia getAgenciaPreferencial() {
+		return agenciaPreferencial;
+	}
+
+	public void setAgenciaPreferencial(Agencia agenciaPreferencial) {
+		this.agenciaPreferencial = agenciaPreferencial;
+	}
+
 	public Cliente(){
 	}
 	
-	public Cliente(String nome, String cpf, LocalDate data) {
+	public Cliente(String nome, String cpf, LocalDate data, Agencia agenciaPreferencial) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.data_nascimento = data;
+		this.agenciaPreferencial = agenciaPreferencial;
 	}
 
 	public String getNome() {

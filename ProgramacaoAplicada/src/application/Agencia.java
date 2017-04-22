@@ -7,11 +7,11 @@ public class Agencia {
 	public Agencia() {
 	}
 
-	public String getagencia() {
+	public String getAgencia() {
 		return agencia;
 	}
 
-	public void setagencia(String agencia) {
+	public void setAgencia(String agencia) {
 		this.agencia = agencia;
 	}
 

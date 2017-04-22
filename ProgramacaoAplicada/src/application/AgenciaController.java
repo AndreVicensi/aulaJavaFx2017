@@ -5,8 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class AgenciaController {
@@ -28,12 +30,22 @@ public class AgenciaController {
 
     private Agencia agencia;
     @FXML
-    private ListView<Agencia> lvagencia;
+    private TableView<Agencia> tblAgencia;
     private boolean editando;
     
     @FXML
+    private TableColumn<Agencia, String> tbcNumero;
+    
+    @FXML
+    private TableColumn<Agencia, String> tbcNome;
+    
+    
+    @FXML
     public void initialize(){
-    	lvagencia.setItems(FXCollections.observableArrayList());
+    	
+    	tbcNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
+    	tbcNome.setCellValueFactory(new PropertyValueFactory<>("agencia"));
+    	tblAgencia.setItems(FXCollections.observableArrayList(SimuladorDB.getAgencias()));
     	novo();
     }
     
@@ -49,11 +61,12 @@ public class AgenciaController {
     }
     
 
+
     @FXML
     void onEditar(MouseEvent event) {
     	if(event.getEventType().equals(MouseEvent.MOUSE_CLICKED)){
-    	agencia =  lvagencia.getSelectionModel().getSelectedItem();
-    	tfagencia.setText(agencia.getagencia());
+    	agencia =  tblAgencia.getSelectionModel().getSelectedItem();
+    	tfagencia.setText(agencia.getAgencia());
     	tfnumero.setText(agencia.getNumero());
     	editando = true;
     	}
@@ -61,7 +74,8 @@ public class AgenciaController {
 
     @FXML
     void onexcluir(ActionEvent event) {
-        	lvagencia.getItems().remove(agencia);
+        	tblAgencia.getItems().remove(agencia);
+        	SimuladorDB.remover(agencia);
         	limparCampos();
     }
 
@@ -72,12 +86,13 @@ public class AgenciaController {
 
     @FXML
     void onsalvar(ActionEvent event) {
-    	agencia.setagencia(tfagencia.getText());
+    	agencia.setAgencia(tfagencia.getText());
     	agencia.setNumero(tfnumero.getText());
     	if(editando){
-    		lvagencia.refresh();
+    		tblAgencia.refresh();
     	} else {
-    		lvagencia.getItems().add(agencia);
+    		SimuladorDB.insert(agencia);
+    		tblAgencia.getItems().add(agencia);
     	}
     	novo();
     }

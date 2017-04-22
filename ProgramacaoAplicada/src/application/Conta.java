@@ -5,16 +5,26 @@ public class Conta {
 	private Integer numero;
 	private Cliente cliente;
 	private Double saldo;
+	private Agencia agencia;
 	
 	public Conta(){
 		saldo = 0.0;
 	}
 	
-	public Conta(Integer numero, Cliente cliente) {
+	public Conta(Agencia agencia ,Integer numero, Cliente cliente) {
 		super();
 		this.numero = numero;
 		this.cliente = cliente;
+		this.agencia = agencia;
 		saldo = 0.0;
+	}
+
+	public Agencia getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
 	}
 
 	public void depositar(Double valor){
@@ -56,6 +66,19 @@ public class Conta {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	@Override
+	public String toString() {
+		return numero + " " + agencia;
+	}
+	
+	public void setNomeCliente(String nome){
+		cliente.setNome(nome);
+	}
+	
+	public String getNomeCliente(){
+		return cliente.getNome();
 	}
 	
 }
