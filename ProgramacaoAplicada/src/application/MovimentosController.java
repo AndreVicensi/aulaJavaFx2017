@@ -28,7 +28,7 @@ public class MovimentosController {
     private TableColumn<Movimento, String> tbcTipo;
 
     @FXML
-    private TableColumn<Movimento, Double> tbcValor;
+    private TableColumn<Movimento, String> tbcValor;
 
     @FXML
     private ComboBox<Conta> cbxConta;
@@ -54,7 +54,7 @@ public class MovimentosController {
     	tbcTipo.setCellValueFactory(new PropertyValueFactory<>(""));
     	tbcValor.setCellValueFactory(new PropertyValueFactory<>(""));
     	cbxConta.setItems(FXCollections.observableArrayList(SimuladorDB.getContas()));
-    	tblMovimentos.setItems(FXCollections.observableArrayList());
+    	tblMovimentos.setItems(FXCollections.observableArrayList(SimuladorDB.getMovimento()));
     	novo();
     }
     
@@ -67,6 +67,7 @@ public class MovimentosController {
     	tfCliente.setText("");
     	tfNumero.setText("");
     	tfValor.setText("");
+    	tblMovimentos.refresh();
     }
     
 
@@ -78,7 +79,7 @@ public class MovimentosController {
     		movimento.setTipo("Saque");	
     	} else if (rdDeposito.isSelected()){
     		cbxConta.getValue().depositar(movimento.getValor());
-    		movimento.setTipo("Depositar");
+    		movimento.setTipo("Deposito");
     	}
     	SimuladorDB.insert(movimento);
     	tblMovimentos.getItems().add(movimento);

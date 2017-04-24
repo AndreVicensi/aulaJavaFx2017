@@ -27,7 +27,7 @@ public class Movimento {
 	
 	@Override
 	public String toString() {
-		return tipo + " " + valor;
+		return tipo + " " + valor.toString();
 	}
 	
 }
