@@ -86,6 +86,7 @@ public class MovimentosController {
     		cbxConta.getValue().depositar(movimento.getValor());
     		movimento.setTipo("Deposito");
     	}
+    	
     	SimuladorDB.insert(movimento);
     	tblMovimentos.getItems().add(movimento);
     	lbValor.setText(cbxConta.getValue().getSaldo().toString());
