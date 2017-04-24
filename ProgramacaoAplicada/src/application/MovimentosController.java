@@ -51,8 +51,8 @@ public class MovimentosController {
     
     @FXML
     public void initialize(){
-    	tbcTipo.setCellValueFactory(new PropertyValueFactory<>(""));
-    	tbcValor.setCellValueFactory(new PropertyValueFactory<>(""));
+    	tbcTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+    	tbcValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
     	cbxConta.setItems(FXCollections.observableArrayList(SimuladorDB.getContas()));
     	tblMovimentos.setItems(FXCollections.observableArrayList(SimuladorDB.getMovimento()));
     	novo();
@@ -68,15 +68,20 @@ public class MovimentosController {
     	tfNumero.setText("");
     	tfValor.setText("");
     	tblMovimentos.refresh();
+    	limparBotoes();
     }
     
+    private void limparBotoes(){
+    	rdDeposito.setSelected(false);
+    	rdSaque.setSelected(false);
+    }
 
     @FXML
     void onsalvar(ActionEvent event) {
     	movimento.setValor(Double.parseDouble(tfValor.getText()));
     	if(rdSaque.isSelected()){
     		cbxConta.getValue().sacar(movimento.getValor());
-    		movimento.setTipo("Saque");	
+    		movimento.setTipo("Saque");
     	} else if (rdDeposito.isSelected()){
     		cbxConta.getValue().depositar(movimento.getValor());
     		movimento.setTipo("Deposito");
@@ -87,6 +92,18 @@ public class MovimentosController {
     	novo();
     }
     
-    
-    
+    @FXML
+    void OnDeposito(ActionEvent event) {
+    	if(rdDeposito.isSelected()){
+    		rdSaque.setSelected(false);
+    	}
+    }
+
+    @FXML
+    void OnSaque(ActionEvent event) {
+    	if(rdSaque.isSelected()){
+    		rdDeposito.setSelected(false);
+    	}
+    }
+  
 }

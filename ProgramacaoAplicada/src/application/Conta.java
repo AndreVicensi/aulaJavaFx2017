@@ -1,5 +1,8 @@
 package application;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class Conta {
 
 	private Integer numero;
@@ -36,6 +39,11 @@ public class Conta {
 		saldo -= valor;
 		return true;
 		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erro ");
+			alert.setHeaderText("Saldo insuficiente");
+			alert.setContentText("Conta sem saldo!");
+			alert.showAndWait();
 			System.out.println("saldo insuficiente");
 			return false;
 		}
